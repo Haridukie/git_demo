@@ -1,12 +1,13 @@
 pipeline{
- agent {
-     docker {'node:18-alpine'}
- }
-  stages
-    {
-      stage('test')
-      {
-        sh 'node --version'
+    agent {
+          docker { 'node:18-alpine' }
+       }
+    stages{
+        stage('test')
+      { 
+        steps{
+           sh 'node --version'
+        }
       }
     }
 }                                         
