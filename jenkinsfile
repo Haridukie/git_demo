@@ -22,6 +22,15 @@ pipeline {
             steps {
                 sh 'node --version'
             }
+
+        stage{
+            agent{
+                docker {image 'hariharan1520/playground'}
+            }
+            steps {
+                sh 'echo "image successfully downloaded" '
+            }
+        }
         }
     }
 }
