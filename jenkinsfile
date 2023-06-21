@@ -23,7 +23,7 @@ pipeline {
                 sh 'node --version'
             }
 
-        stage{
+        stage(deploy) {
             agent{
                 docker {image 'hariharan1520/playground'}
             }
