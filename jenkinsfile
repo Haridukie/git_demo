@@ -22,6 +22,8 @@ pipeline {
             steps {
                 sh 'node --version'
             }
+         }
+         
 
         stage('deploy') {
             agent{
@@ -31,6 +33,6 @@ pipeline {
                 sh 'echo "image successfully downloaded" '
             }
         }
-        }
+       
     }
 }
