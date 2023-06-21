@@ -1,7 +1,12 @@
 pipeline {
+    agent any
+    
     stages {
         stage('Test') {
-            agent { docker { image 'python:latest' }
+            agent {
+                docker {
+                    image 'python:latest'
+                }
             }
             steps {
                 sh 'python --version'
@@ -10,9 +15,10 @@ pipeline {
 
         stage('Build') {
             agent {
-                docker { image 'python:latest' }
+                docker {
+                    image 'python:latest'
+                }
             }
-        
             steps {
                 sh 'python -V'
             }
