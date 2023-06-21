@@ -1,11 +1,12 @@
-pipeline
+pipeline{
  agent {
-     docker {node:18-alpine}
+     docker {'node:18-alpine'}
  }
   stages
     {
       stage('test')
       {
-        sh "node --version"
+        sh 'node --version'
       }
     }
+}                                         
