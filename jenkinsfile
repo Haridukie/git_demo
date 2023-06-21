@@ -1,11 +1,11 @@
 pipeline {
-    agent {
-        docker { image 'hariharan1520/getting-started' }
-    }
+    
     stages {
         stage('Test') {
+            agent { docker { image 'python:latest' }
+            }
             steps {
-                sh 'node --version'
+                sh 'python --version'
             }
         }
 
