@@ -9,15 +9,14 @@ pipeline {
             }
         }
 
-        stage('build'){
-           agent {
-           docker { image 'python:3-slimbuster' }
-            }   
+        stage('Build') {
+            agent {
+                docker { image 'python:3-slim-buster' }
+            }
         
-          steps {
-            sh 'python -V'
-          }
+            steps {
+                sh 'python -V'
+            }
+        }
     }
-    }
-       
-} 
+}
