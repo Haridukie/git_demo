@@ -8,13 +8,16 @@ pipeline {
                 sh 'node --version'
             }
         }
-    }
-       stage('build'){
-         agent {
-         docker {image 'python:3-slimbuster'}
-         }   
+
+        stage('build'){
+           agent {
+           docker { image 'python:3-slimbuster' }
+            }   
         
-        steps {'sh python -V'
-        }
+          steps {
+            'sh python -V'
+          }
     }
+    }
+       
 } 
