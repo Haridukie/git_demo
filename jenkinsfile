@@ -1,23 +1,11 @@
-pipeline {
-  agent any
-  stages {
-    stage('Build') {
-      steps {
-        sh 'echo "Building..."'
+pipeline
+ agent {
+     docker {node:18-alpine}
+ }
+  stages
+    {
+      stage('test')
+      {
+        sh "node --version"
       }
     }
-    stage('Test') {
-      steps {
-        sh 'echo "Testing..."'
-      }
-    }
-    stage('Deploy') {
-      steps {
-        sh 'echo "Deploying..."'
-        sh 'echo "this is deployed because of the github webhook"'
-        sh 'echo "this is the new  deployed because of the github webhook"'
-
-      }
-    }
-  }
-}
