@@ -16,7 +16,7 @@ pipeline {
         stage('Build') {
             agent {
                 docker {
-                    image ' hariharan1520/getting-started '
+                    image 'hariharan1520/getting-started'
                 }
             }
             steps {
