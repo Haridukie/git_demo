@@ -45,7 +45,7 @@ pipeline {
             
             when{
                 expression{
-                    currentBUILD.result == 'success '
+                    currentBUILD.result == 'SUCCESS'
                 }
             }
 
