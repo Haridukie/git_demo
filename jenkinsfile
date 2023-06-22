@@ -1,60 +1,22 @@
-pipeline {
-     agent any
-    
-    stages {
-        stage('Test') {
-            agent {
-                docker {
-                    image 'python:latest'
+stages {
+    stage('Ping EC2 Server') {
+        steps {
+            withCredentials([[
+                $class: 'AmazonWebServicesCredentialsBinding',
+                credentialsId: '539c594e-b328-401b-8b48-e12917d6d2c3', // Replace with your credential ID or name
+                accessKeyVariable: 'AWS_ACCESS_KEY_ID',
+                secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
+            ]]) {
+                script {
+                    sh '''
+                        # Replace <EC2_SERVER_IP> with the actual IP address or hostname of your EC2 server
+                        ping -c 4 13.127.108.200
+                        
+                        # Access the AWS CLI
+                        aws ec2 describe-instances
+                    '''
                 }
             }
-            steps {
-                sh 'python --version'
-            }
         }
-
-        stage('Build') {
-            agent {
-                docker {
-                    image 'hariharan1520/getting-started'
-                }
-            }
-            steps {
-                sh 'node --version'
-            }
-        }
-
-
-        stage('deploy') {
-            agent{
-                docker {image 'hariharan1520/playground'}
-            }
-            steps {
-                sh 'echo "image successfully downloaded" '
-                sh 'ls -ltr && pwd '
-            }
-        }
-
-        stage('testing'){
-            
-            agent {
-                docker {
-                    image 'mysql:latest'    
-                 }
-            }
-            
-            when{
-                expression{
-                    currentBuild.result == 'SUCCESS'
-                }
-            }
-
-            steps{
-                sh 'mysql -V'
-                sh 'echo "${env.BUILD_ID} and ${env.JENKINS_URL}"'
-            }
-
-        }
-       
     }
 }
