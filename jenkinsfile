@@ -43,7 +43,10 @@ pipeline {
                     image 'mysql:latest'
                  }
             }
-            sh 'echo "mysql downloaded successfully"'
+            steps{
+                sh 'mysql -V'
+            }
+
         }
        
     }
