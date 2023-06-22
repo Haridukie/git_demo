@@ -42,6 +42,13 @@ pipeline {
                     image 'mysql:latest'
                  }
             }
+            
+            when{
+                expression{
+                    currentBUILD.result == 'success '
+                }
+            }
+
             steps{
                 sh 'mysql -V'
             }
