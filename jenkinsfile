@@ -51,6 +51,7 @@ pipeline {
 
             steps{
                 sh 'mysql -V'
+                sh 'echo "${env.BUILD_ID} and ${env.JENKINS_URL}"'
             }
 
         }
