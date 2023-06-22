@@ -32,7 +32,18 @@ pipeline {
             steps {
                 sh 'echo "image successfully downloaded" '
                 sh 'ls -ltr && pwd '
+                sh 'mkdir docker && cd docker && docker build  -t hariharan1520/playground'
             }
+        }
+
+        stage('testing'){
+            
+            agent {
+                docker {
+                    image 'mysql:latest'
+                 }
+            }
+            sh 'echo "mysql downloaded successfully"'
         }
        
     }
