@@ -20,7 +20,7 @@ pipeline {
                 }
             }
             steps {
-                sh 'node --version'
+                sh 'docker run -dp 5000:5000 getting-started'
             }
         }
 
