@@ -17,12 +17,11 @@ pipeline {
             agent {
                 docker {
                     image 'hariharan1520/getting-started'
-                    jenkins
-
+                    args '-p 5000:5000'
                 }
             }
             steps {
-                sh(script: 'docker run -dp 5000:5000 getting-started', library: 'jenkins-pipeline')
+                sh 'docker run -d -p 5000:5000 hariharan1520/getting-started'
             }
         }
 
